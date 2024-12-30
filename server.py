@@ -21,7 +21,6 @@ def guess_word():
     else:
         words_guessed.append(curr_guess)
         message = guess(curr_guess)
-    print("returning message now")
 
     return jsonify({
         "message": message,

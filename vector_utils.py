@@ -27,7 +27,7 @@ def most_similar_words(word_vecs, word):
         similarities.append((w, sim))
     
     similarities.sort(key=lambda x: x[1], reverse=True)
-    print(similarities[:8])
+    print(similarities[:35])
     
     return similarities
 
@@ -44,13 +44,3 @@ def find_word_index(word, float_score, similarities):
     index = bisect.bisect_left(just_sims, rounded_score)
     print("index of ", index)
     return 400000 - index - 1
-    
-    # Ensure the index is within bounds and matches the exact score
-    if index < len(similarities) and abs(similarities[index][1] - float_score) < 1e-9:  # Allow for small floating-point errors
-        print("WE FOUND AN INDEX OF", index)
-        print("\n\n")
-        return index
-    else:
-        print("No index, ugh")
-        print("\n\n")
-        return -1  # Word not found
