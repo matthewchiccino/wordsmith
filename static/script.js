@@ -39,7 +39,7 @@ submitButton.addEventListener('click', () => {
                     guessElement.classList.add('guess-item');
                     guessElement.innerHTML = `
                         <strong>Guess:</strong> ${item.guess} <br>
-                        <strong>Similarity:</strong> ${(item.similarity * 100).toFixed(2)}% <br><br>
+                        <strong>Score:</strong> ${(item.similarity)} <br><br>
                     `;
                     resultsContainer.appendChild(guessElement); // Append the results to the container
                 });
