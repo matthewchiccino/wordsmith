@@ -8,6 +8,9 @@ const resultsContainer = document.getElementById('resultsContainer'); // Main co
 const apiUrl = 'http://127.0.0.1:8080/guess';
 
 // Function to handle the word submission
+submitButton.addEventListener('click', handleSubmit);
+
+// Function to handle the word submission
 function handleSubmit() {
     let word = wordInput.value.trim().toLowerCase(); // Get the value from the input and convert to lowercase
 
@@ -21,7 +24,12 @@ function handleSubmit() {
             },
             body: JSON.stringify({ word: word }), // Send the word in the request body
         })
-        .then(response => response.json()) // Parse the JSON response
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the JSON response
+        })
         .then(data => {
             console.log(data); // Handle the response data from the backend
 
@@ -55,4 +63,4 @@ function handleSubmit() {
     } else {
         alert('Please enter a word');
     }
-});
+}
