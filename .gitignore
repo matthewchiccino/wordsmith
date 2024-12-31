@@ -1,2 +1,3 @@
 nouns.txt
 word_vecs.txt
+__pycache__*

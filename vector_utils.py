@@ -1,4 +1,5 @@
 import numpy as np
+import bisect
 
 def similarity(word_vecs, w1, w2):
     # Determines the similarity of two words
@@ -16,19 +17,30 @@ def similarity(word_vecs, w1, w2):
     return cosine_sim
 
 #Determines the closest words to a given word
-def most_similar_words(word_vecs, n, word):
+def most_similar_words(word_vecs, word):
 
     similarities = []
 
     # Loop over all words in word_vecs
     for w in word_vecs:
-        sim = similarity(word_vecs, word, w)
+        sim = round(similarity(word_vecs, word, w), 5)
         similarities.append((w, sim))
     
     similarities.sort(key=lambda x: x[1], reverse=True)
+    print(similarities[:35])
     
-    for i in range(10):
-        print("#", str(i), ": ", similarities[i])
+    return similarities
 
 
-    return similarities[1:n+1]
+def find_word_index(word, float_score, similarities):
+    # Extract the list of just the similarity scores
+    just_sims = [score for _, score in similarities]
+    
+    # Use bisect_left to find the correct index where float_score would fit
+    rounded_score = round(float_score, 9)
+    print("float score:", rounded_score)
+    print(just_sims[:10])
+    just_sims = just_sims[::-1]
+    index = bisect.bisect_left(just_sims, rounded_score)
+    print("index of ", index)
+    return 400000 - index - 1

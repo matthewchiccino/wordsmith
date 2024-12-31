@@ -15,13 +15,12 @@ def guess_word():
 
     data = request.get_json()
     curr_guess = data.get('word')
-    print("I GOT A WORD LFG, ITS", curr_guess)
+    print("guess recieved:", curr_guess)
     if curr_guess in words_guessed:
         message = "already guessed"
     else:
         words_guessed.append(curr_guess)
         message = guess(curr_guess)
-    print("we made it past the new stuff i guess?")
 
     return jsonify({
         "message": message,
