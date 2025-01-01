@@ -6,7 +6,7 @@ const recentScoreBox = document.getElementById('recentScoreBox');
 const resultsContainer = document.getElementById('resultsContainer'); // Main container
 
 // Define the API endpoint (adjust this to your backend URL)
-const apiUrl = 'http://127.0.0.1:8080/guess';
+const apiUrl = 'https://wordsmith-1.onrender.com//guess';
 
 // Function to handle the word submission
 function handleSubmit() {
