@@ -38,5 +38,8 @@ def guess_word():
 def home():
     return render_template('index.html')
 
+# for local testing
+"""
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
+    """
