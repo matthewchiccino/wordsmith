@@ -2,6 +2,7 @@
 const wordInput = document.getElementById('wordInput'); // Field where user types word
 const submitButton = document.getElementById('submitButton'); // Button
 const messageBox = document.getElementById('messageBox');
+const recentScoreBox = document.getElementById('recentScoreBox');
 const resultsContainer = document.getElementById('resultsContainer'); // Main container
 
 // Define the API endpoint (adjust this to your backend URL)
@@ -30,6 +31,7 @@ function handleSubmit() {
 
             // Display the message
             messageBox.textContent = data.message; // Display the message from the response
+            recentScoreBox.textContent = data.score;
 
             // Process the guesses (if any)
             if (data.data && data.data.length > 0) {
@@ -53,7 +55,7 @@ function handleSubmit() {
                     resultsContainer.appendChild(guessElement); // Add the whole result to the page
 
                     // Update the width of this specific progress bar
-                    const decimal = Math.max(0, Math.min(1, item.similarity / 400000)); // Normalize similarity
+                    const decimal = Math.max(0, Math.min(1, item.similarity / 42180)); // Normalize similarity
                     progressFill.style.width = `${decimal * 100}%`;
                 });
             }

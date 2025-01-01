@@ -43,4 +43,4 @@ def find_word_index(word, float_score, similarities):
     just_sims = just_sims[::-1]
     index = bisect.bisect_left(just_sims, rounded_score)
     print("index of ", index)
-    return 400000 - index - 1
+    return 40000 - index - 1

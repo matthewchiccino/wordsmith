@@ -6,7 +6,8 @@ guesses_info = []
 
 print("loading words...")
 # Load word vectors (lots)
-with open('word_vecs.txt', encoding='utf-8', newline='\n', errors='ignore') as f:
+
+with open('final_word_vecs_100d.txt', encoding='utf-8', newline='\n', errors='ignore') as f:
     word_vecs = {}
     for line in f:
         tokens = line.rstrip().split(' ')
@@ -30,24 +31,24 @@ top_ten = similarities[:10]
 print(f"The most similar word has similarity: {top_ten[0][1]}")
 print(f"The 10th most similar word has similarity: {top_ten[9][1]}")
 
+def is_valid_word(w):
+    return w in word_vecs
 
 def guess(guess_word):
-    if guess_word in word_vecs:
-        # Calculate the similarity score
-        guess_float_score = similarity(word_vecs, guess_word, word)
-        int_score = find_word_index(guess_word, guess_float_score, similarities)
+    
+    # Calculate the similarity score
+    guess_float_score = similarity(word_vecs, guess_word, word)
+    int_score = find_word_index(guess_word, guess_float_score, similarities)
 
-        # Store guess info and sort by similarity
-        guesses_info.append({"guess": guess_word, "similarity": int_score})
-        guesses_info.sort(key=lambda x: x['similarity'])
+    # Store guess info and sort by similarity
+    guesses_info.append({"guess": guess_word, "similarity": int_score})
+    guesses_info.sort(key=lambda x: x['similarity'])
 
-        print("SCORE:", int_score)
+    print("SCORE:", int_score)
         
-        if guess_word == word:
-            return "You got it!"
+    if guess_word == word:
+        return "You got it!", int_score
         
-        print(similarity(word_vecs, guess_word, word))
-        return "Decent guess"
-    else:
-        return "I'm not sure that's a word"
+    print(similarity(word_vecs, guess_word, word))
+    return "Decent guess", int_score
 
