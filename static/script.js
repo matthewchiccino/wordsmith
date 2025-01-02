@@ -53,10 +53,8 @@ function handleSubmit() {
                     progressContainer.appendChild(progressFill); // Insert fill into container
                     guessElement.appendChild(progressContainer); // Add the bar to the result
                     resultsContainer.appendChild(guessElement); // Add the whole result to the page
-
-                    // Update the width of this specific progress bar
-                    const decimal = Math.max(0, Math.min(1, item.similarity / 42180)); // Normalize similarity
-                    progressFill.style.width = `${decimal * 100}%`;
+                    
+                    progressBar(item.similarity, progressFill);
                 });
             }
         })
@@ -81,3 +79,19 @@ wordInput.addEventListener('keydown', function(event) {
         handleSubmit(); // Trigger the submit button click when Enter is pressed
     }
 });
+
+function progressBar(sim_score, progressFill){
+    // Calculate decimal using the formula
+    const decimal = Math.pow(sim_score + 1, -0.0001 * sim_score);
+
+    // Calculate the opposite (flip) of the decimal value since I shade in the grey area not the colored
+    let decimal_flip = 1 - decimal;
+    
+    // slightly modify so that bar never super empty
+    if (decimal_flip > 0.999) {
+        decimal_flip -= 0.01; 
+    } else if (decimal_flip > 0.99) {
+        decimal_flip -= 0.02;
+    }
+    progressFill.style.width = `${decimal_flip * 100}%`; // Use the calculated decimal
+}
