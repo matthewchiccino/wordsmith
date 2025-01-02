@@ -1,12 +1,28 @@
 /* General body styling */
 body {
-    font-family: 'Press Start 2P', cursive; /* Sets a retro-style font for the page */
-    background-color: #f4f4f9; /* Light gray background for the whole page */
+    /* normal nice font*/
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; /* Set a base font size for the entire page */
+    background-color: #f9faff; /* Light gray background for the whole page */
     display: flex; /* Enables Flexbox layout for centering */
     justify-content: center; /* Horizontally centers the container */
     /*align-items: center; /* Vertically centers the container */
     height: 100%; /* Makes the body take up the full viewport height */
     margin: 0; /* Removes default margin */
+}
+
+.menu {
+    display: flex; /* Ensures flexbox layout */
+    justify-content: flex-start; /* Aligns items to the left */
+    direction: row;
+    margin-top: 5px;
+
+}
+
+.menu .fa {
+    text-decoration: none; /* Remove underline from icons */
+    color: #3b3b3b; /* Blue color for icons */
+    margin-left: 10px; /* Optional: Adds spacing between icons */
 }
 
 /* Styles for the main container */
@@ -15,15 +31,14 @@ body {
     max-width: 600px; /* Limits the maximum width of the container */
     width: 100%; /* Ensures the container is responsive */
     height: 100vh;
-    padding: 20px; /* Adds space inside the container */
-    background-color: #fdfdfd; /* White background for the container */
+    background-color: #fcfcfc; /* White background for the container */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
     border-radius: 8px; /* Rounds the corners */
 }
 
 /* Header styling */
 h1 {
-    font-size: 24px; /* Sets the size of the header text */
+    font-size: 1.8rem; /* Use rem for responsive scaling */
     margin-bottom: 10px; /* Adds space below the header */
 }
 
@@ -47,6 +62,7 @@ h1 {
     cursor: pointer; /* Changes the cursor to a pointer on hover */
     border-radius: 2px; /* Rounds the corners */
     transition: background-color 0.3s; /* Smooth color transition on hover */
+    margin-bottom: 10px; /* Adds space below the input */
 }
 
 #submitButton:hover {
@@ -55,16 +71,16 @@ h1 {
 
 /* Results container styling */
 #resultsContainer {
-    margin-top: 20px; /* Adds space above the results section */
+    margin-top: 15px; /* Adds space above the results section */
     text-align: left; /* Aligns text to the left */
     max-height: 400px; /* Limits the height of the container */
-    padding-right: 10px; /* Adds a small padding for scrollbar visibility */
+    padding-right: 35px; /* Adds a small padding for scrollbar visibility */
+    padding-left: 35px; /* Adds a small padding for scrollbar visibility */
 }
-
 
 /* Styling for individual guess items */
 .guess-item {
-    background-color: #f9f9f9; /* Light background for guess items */
+    background-color: #f5f5f5; /* Light background for guess items */
     padding: 10px; /* Adds space inside each item */
     margin: 5px 0; /* Adds vertical spacing between items */
     border-radius: 2px; /* Rounds the corners */
@@ -87,8 +103,8 @@ h1 {
     overflow: hidden; /* Ensures the fill doesn't overflow the bar */
   }
   
-  /* Progress fill */
-  .progress-fill {
+/* Progress fill */
+.progress-fill {
     position: absolute;
     top: 0;
     right: 0; /* Start from the right side */
@@ -97,3 +113,31 @@ h1 {
     width: 0%; /* Initially, the fill is at 0% */
     transition: width 0.3s ease; /* Smooth animation */
   }
+
+.instructions {
+    line-height: 1.4; /* Adjust this value for more space between lines */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+li {
+    margin-bottom: 15px; /* Adds space between each list item */
+}
+
+#backBox {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#backBox:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

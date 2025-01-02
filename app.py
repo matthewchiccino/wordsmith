@@ -21,6 +21,14 @@ def home():
     print(session['guesses_info'])
     return render_template('index.html')
 
+@app.route('/info.html')
+def info():
+    return render_template('info.html')
+
+@app.route('/help.html')
+def help():
+    return render_template('help.html')
+
 @app.route('/guess', methods=['POST'])
 def guess_word():
     print("as soon as i got the request this is session['guesses_info']")
