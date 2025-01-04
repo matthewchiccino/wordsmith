@@ -12,20 +12,46 @@ body {
 }
 
 .menu {
-    display: flex; /* Ensures flexbox layout */
-    justify-content: flex-start; /* Aligns items to the left */
-    direction: row;
+    padding-top: 5px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between; /* Space between left and right groups */
+    align-items: center; /* Centers the items vertically */
     margin-top: 5px;
-
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.menu .fa {
+.left-group {
+    display: flex;
+    align-items: center; /* Vertically aligns elements */
+    justify-content: flex-start; /* Aligns the items to the left */
+}
+
+.helpButtons {
+    display: flex;
+    justify-content: flex-end; /* Aligns the help buttons to the right */
+}
+
+
+
+.helpButtons{
+    display: flex;
+    justify-content: flex-end; /* Aligns the buttons to the right */
+}
+
+
+.helpButtons .fa {
     text-decoration: none; /* Remove underline from icons */
     color: #3b3b3b; /* Blue color for icons */
-    margin-left: 10px; /* Optional: Adds spacing between icons */
+    margin-right: 10px; /* Optional: Adds spacing between icons */
+    font-size: 24px; /* Increase the font size for bigger icons */
+    justify-content: flex-end; /* Aligns the buttons to the right */
 }
 
-/* Styles for the main container */
+#helpButton{
+    animation: pulse 1.5s ease-in-out 3; /* Pulse animation */
+}
+
 .container {
     text-align: center; /* Centers text within the container */
     max-width: 600px; /* Limits the maximum width of the container */
@@ -52,7 +78,6 @@ h1 {
     border: 1px solid #ccc; /* Light gray border */
 }
 
-/* Button styling */
 #submitButton {
     padding: 10px 20px; /* Adds space inside the button */
     background-color: #4CAF50; /* Green background color */
@@ -69,7 +94,25 @@ h1 {
     background-color: #45a049; /* Darker green when hovered */
 }
 
-/* Results container styling */
+#hintButton {
+    padding: 15px, 15px;
+    background-color: #343434; /* Green background color */
+    color: white; /* White text color */
+    font-size: 18px; /* Sets text size */
+    border: none; /* Removes the default border */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    border-radius: 2px; /* Rounds the corners */
+    transition: background-color 0.3s; /* Smooth color transition on hover */
+}
+
+#hintButton:hover {
+    background-color: #181818; 
+}
+
+#guessCountBox {
+    padding-left: 10px;
+}
+
 #resultsContainer {
     margin-top: 15px; /* Adds space above the results section */
     text-align: left; /* Aligns text to the left */
@@ -87,18 +130,17 @@ h1 {
     border: 2px solid #ddd; /* Light gray border */
 }
 
-/* Highlight text in guess items */
+
 .guess-item strong {
-    color: #333; /* Darker text for emphasis */
+    color: #333; 
 }
 
 /* Progress bar container */
 .progress-bar {
     position: relative;
     width: 100%; /* The outer bar takes the full width */
-    height: 10px; /* You can adjust the height of the progress bar */
+    height: 10px; 
     background: linear-gradient(to right, rgb(222, 111, 111), rgb(216, 216, 106), rgb(116, 219, 116));
-
     border-radius: 10px;
     overflow: hidden; /* Ensures the fill doesn't overflow the bar */
   }
@@ -111,11 +153,11 @@ h1 {
     height: 100%; /* Fill the entire height of the progress bar */
     background: #e0e0e0; /* Light grey background */
     width: 0%; /* Initially, the fill is at 0% */
-    transition: width 0.3s ease; /* Smooth animation */
+    transition: width 0.3s ease; 
   }
 
 .instructions {
-    line-height: 1.4; /* Adjust this value for more space between lines */
+    line-height: 1.4;
     margin-top: 15px;
     margin-bottom: 15px;
     margin-right: 40px;
@@ -123,7 +165,7 @@ h1 {
 }
 
 li {
-    margin-bottom: 15px; /* Adds space between each list item */
+    margin-bottom: 15px; /* Adds space between each item in list */
 }
 
 #backBox {
@@ -133,11 +175,25 @@ li {
     color: white;
     text-align: center;
     text-decoration: none; /* Remove underline */
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px; 
     font-size: 16px;
     cursor: pointer;
 }
 
 #backBox:hover {
     background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* Define the pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Initial size */
+    }
+    50% {
+        transform: scale(1.3); /* Slightly bigger */
+    }
+    100% {
+        transform: scale(1); /* Back */
+    }
 }

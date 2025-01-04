@@ -56,6 +56,27 @@ def guess_word():
         message, curr_score, guesses_info = guess(curr_guess, word, similarities, guesses_info, word_vecs)
         session['guesses_info'] = guesses_info  # Update session with the new guesses info
 
+@app.route('/hint', methods=['GET'])
+def hint():
+    # Retrieve session data
+    word = session.get('word')
+    similarities = session.get('similarities')
+    guesses_info = session.get('guesses_info', [])\
+    
+    # (word, index tuple)
+    hinted_word = get_hint(similarities, guesses_info)
+    print("we got a hinted word of", hinted_word)
+
+    # Process the guess
+    message, curr_score, guesses_info = guess(hinted_word[0], word, similarities, guesses_info, word_vecs)
+    session['guesses_info'] = guesses_info  # Update session with the new guesses info
+    
+    return jsonify({
+        "message": f"your hint is: {hinted_word[0]}",
+        "score": curr_score,
+        "data": guesses_info
+    })
+
     return jsonify({
         "message": message,
         "score": curr_score,

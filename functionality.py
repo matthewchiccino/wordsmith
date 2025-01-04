@@ -21,15 +21,44 @@ def initialize_game():
         
     # Pick a random word for the current session
     word = random.choice(words)
+    word = "computer"
 
     # Get the top similar words
     similarities = most_similar_words(word_vecs, word)
-    #print(f"The 10th most similar word has similarity: {top_ten[9][1]}")
+    # Print the top 10 most similar words
+    #for i, (similar_word, similarity) in enumerate(similarities[:25]):
+        #print(f"{i + 1}. {similar_word} with similarity: {similarity}")
 
     return word, similarities  # Return initial game state
 
 def is_valid_word(w, word_vecs):
     return w in word_vecs
+
+def get_hint(similarities, guesses_info):
+    if not guesses_info:
+        return similarities[201]
+    
+    highest_guess = guesses_info[0]['similarity']
+
+    if highest_guess == 1:
+        length = len(guesses_info)
+        # edge case if the hint needs to be the worst guess yet
+        if guesses_info[-1]['similarity'] == length:
+            return similarities[length+1]
+        
+        # else find the highest index that hasnt been guessed yet
+        p1 = 1
+        p2 = 1
+        while p2 == p1:
+            p2+=1
+            p2 = guesses_info[p2-1]['similarity']
+            p1+=1
+            
+        return similarities[p1]
+
+    else:
+        return similarities[highest_guess // 2]
+
 
 def guess(guess_word, word, similarities, guesses_info, word_vecs):
     # Calculate the similarity score
@@ -44,5 +73,13 @@ def guess(guess_word, word, similarities, guesses_info, word_vecs):
     
     if guess_word == word:
         return "You got it!", int_score, guesses_info
-
-    return "Decent guess", int_score, guesses_info
+    elif int_score >= 10000:
+        return "not so close", int_score, guesses_info
+    elif int_score <= 20:
+        return "good guess!", int_score, guesses_info
+    elif int_score <= 100:
+        return "getting close...", int_score, guesses_info
+    elif int_score <= 15:
+        return "almost there!", int_score, guesses_info
+    else:
+        return "Decent guess", int_score, guesses_info

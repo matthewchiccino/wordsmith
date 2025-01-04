@@ -17,9 +17,16 @@
 <body>
     <div class="container">
         <div class = "menu">
-            <a href="/info.html" class="fa fa-info-circle"></a>
-            <a href="/help.html" class="fa fa-question-circle"></a>
-            <a href="https://github.com/matthewchiccino/wordsmith" class="fa fa-github" target="_blank"></a>
+            <!-- Left-aligned elements: Hint and Guess Count -->
+            <div class="left-group">
+                <button id="hintButton">Hint</button>
+                <div id="guessCountBox">Guess count:</div>
+            </div>
+            <div class = "helpButtons">
+                <a href="/help.html" class="fa fa-question-circle" id="helpButton"></a>
+                <a href="/info.html" class="fa fa-info-circle"></a>
+                <a href="https://github.com/matthewchiccino/wordsmith" class="fa fa-github" target="_blank"></a>
+            </div>
         </div>
         <div class="main-content">
             <h1>Enter your word:</h1>
