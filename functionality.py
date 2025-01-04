@@ -71,15 +71,16 @@ def guess(guess_word, word, similarities, guesses_info, word_vecs):
 
     print("SCORE:", int_score)
     
+    # Corrected the order of the conditions for more accurate result handling
     if guess_word == word:
         return "You got it!", int_score, guesses_info
-    elif int_score >= 10000:
-        return "not so close", int_score, guesses_info
+    elif int_score <= 15:
+        return "almost there!", int_score, guesses_info
     elif int_score <= 20:
         return "good guess!", int_score, guesses_info
     elif int_score <= 100:
         return "getting close...", int_score, guesses_info
-    elif int_score <= 15:
-        return "almost there!", int_score, guesses_info
+    elif int_score >= 10000:
+        return "not so close", int_score, guesses_info
     else:
         return "Decent guess", int_score, guesses_info
