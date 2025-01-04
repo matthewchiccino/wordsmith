@@ -21,7 +21,8 @@ def initialize_game():
         
     # Pick a random word for the current session
     word = random.choice(words)
-    word = "computer"
+    # for testing
+    #word = "computer"
 
     # Get the top similar words
     similarities = most_similar_words(word_vecs, word)
