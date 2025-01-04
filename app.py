@@ -56,6 +56,12 @@ def guess_word():
         message, curr_score, guesses_info = guess(curr_guess, word, similarities, guesses_info, word_vecs)
         session['guesses_info'] = guesses_info  # Update session with the new guesses info
 
+    return jsonify({
+        "message": message,
+        "score": curr_score,
+        "data": guesses_info
+    })
+
 @app.route('/hint', methods=['GET'])
 def hint():
     # Retrieve session data
@@ -73,12 +79,6 @@ def hint():
     
     return jsonify({
         "message": f"your hint is: {hinted_word[0]}",
-        "score": curr_score,
-        "data": guesses_info
-    })
-
-    return jsonify({
-        "message": message,
         "score": curr_score,
         "data": guesses_info
     })
