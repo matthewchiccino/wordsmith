@@ -8,5 +8,5 @@ interaction. With a hint system and word vector math powering the gameplay, this
 ive learned inside and out of the classroom to make a functional and fun game!
 
 ## How to Play
-Visit the game online: [wordsmith](hthttps://wordsmith-1.onrender.com/).  
+Visit the game online: [wordsmith](https://wordsmith-1.onrender.com/).  
 More instructions on how to play can be found there.
