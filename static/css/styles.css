@@ -2,6 +2,7 @@ body {
     font-family: 'Montserrat', sans-serif; /* normal nice font*/
     font-size: 18px; /* font for entire page */
     background-color: #f9faff; /* background page color */
+    display: flex; /* Enables Flexbox layout for centering */
     justify-content: center; /* horizontally centers the container */
     height: 100%; /* makes the body take up the full viewport height */
     margin: 0; 
